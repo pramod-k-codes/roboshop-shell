@@ -71,6 +71,10 @@ VALIDATE $? "cd to app"
 npm install &>> $LOGFILE
 VALIDATE $? "npm install"
 
+
+# use absolute, because catalogue.service exists there
+cp /home/centos/roboshop-shell/catalogue.service /etc/systemd/system/catalogue.service &>> $LOGFILE
+
 systemctl daemon-reload
 VALIDATE $? "systemctl daemon-reload"
 
@@ -81,6 +85,7 @@ systemctl start catalogue
 VALIDATE $? "systemctl start catalogue"
 
 cp mongo.repo /etc/yum.repos.d/mongo.repo &>> $LOGFILE
+VALIDATE $? "copying mongo repo"
 dnf install mongodb-org-shell -y &>> $LOGFILE
 VALIDATE $? "mongodb-org-shell installation"
 mongo --host $MONGDB_HOST </app/schema/catalogue.js &>> $LOGFILE
