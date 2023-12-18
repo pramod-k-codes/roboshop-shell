@@ -23,7 +23,6 @@ LOGFILE="/tmp/$0-$TIMESTAMP.log"
 # CURRENT_DATE = date +"%Y-%m-%d_%H:%M:%S"
 # LOGFILE = /tmp/$CURRENT_FILE_NAME-$CURRENT_DATE.log #filename timestamp logfile
 
-echo "log path $LOGFILE" &>> $LOGFILE
 
 echo "started execution at $CURRENT_DATE" &>> $LOGFILE
 
@@ -31,6 +30,7 @@ VALIDATE(){
     if [ $1 -ne 0 ]
     then
         echo -e "$2 ... $R FAILED $N"
+        echo "log path $LOGFILE" &>> $LOGFILE
         exit 1
     else
         echo -e "$2 ... $G SUCCESS $N"
