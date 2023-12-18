@@ -46,6 +46,7 @@ else
 fi # fi means reverse of if, indicating condition end
 
 # vim /etc/yum.repos.d/mongo.repo
+echo "log path $LOGFILE"
 cp monorepo /etc/yum.repos.d/mongo.repo &>> $LOGFILE
 VALIDATE $? "copied mongo repo"
 
