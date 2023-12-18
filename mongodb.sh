@@ -46,19 +46,19 @@ fi # fi means reverse of if, indicating condition end
 
 # vim /etc/yum.repos.d/mongo.repo
 cp monorepo /etc/yum.repos.d/mongo.repo &>> $LOGFILE
-VALIDATE "copied mongo repo"
+VALIDATE $? "copied mongo repo"
 
 dnf install mongodb-org -y &>> $LOGFILE
-VALIDATE "install mongo repo"
+VALIDATE $? "install mongo repo"
 
 
 systemctl enable mongod &>> $LOGFILE
-VALIDATE "enable mongo "
+VALIDATE $? "enable mongo "
 
 systemctl start mongod &>> $LOGFILE
-VALIDATE "start mongo"
+VALIDATE $? "start mongo"
 systemctl status mongod &>> $LOGFILE
-VALIDATE "status mongo"
+VALIDATE $? "status mongo"
 #replace 127.0.0.1 with 0.0.0.0 in /etc/mongod.conf
 sed -i 's/127.0.0.1/0.0.0.0/' /etc/mongod.conf  &>> $LOGFILE
 
