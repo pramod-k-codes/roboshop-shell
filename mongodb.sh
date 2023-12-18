@@ -23,6 +23,7 @@ LOGFILE="/tmp/$0-$TIMESTAMP.log"
 # CURRENT_DATE = date +"%Y-%m-%d_%H:%M:%S"
 # LOGFILE = /tmp/$CURRENT_FILE_NAME-$CURRENT_DATE.log #filename timestamp logfile
 
+echo "log path $LOGFILE" &>> $LOGFILE
 
 echo "started execution at $CURRENT_DATE" &>> $LOGFILE
 
