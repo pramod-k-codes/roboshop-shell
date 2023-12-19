@@ -45,7 +45,7 @@ dnf module enable nodejs:18 -y  &>> $LOGFILE
 dnf install nodejs -y &>> $LOGFILE
 
 id roboshop  &>> $LOGFILE
-if [ $? -eq 0 ]
+if [ $? -ne 0 ]
 then
     useradd roboshop
     VALIDATE $? "roboshop user creation"
