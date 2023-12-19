@@ -65,8 +65,8 @@ VALIDATE $? "cd to app"
 unzip -o /tmp/catalogue.zip &>> $LOGFILE # -o
 VALIDATE $? "unzip catalogue"
 
-cd /app &>> $LOGFILE
-VALIDATE $? "cd to app"
+# cd /app &>> $LOGFILE
+# VALIDATE $? "cd to app"
 
 npm install &>> $LOGFILE
 VALIDATE $? "npm install"
@@ -85,7 +85,7 @@ VALIDATE $? "systemctl enable catalogue"
 systemctl start catalogue
 VALIDATE $? "systemctl start catalogue"
 
-cp mongo.repo /etc/yum.repos.d/mongo.repo &>> $LOGFILE
+cp /root/roboshop-shell/mongo.repo /etc/yum.repos.d/mongo.repo &>> $LOGFILE
 VALIDATE $? "copying mongo repo"
 
 dnf install mongodb-org-shell -y &>> $LOGFILE
