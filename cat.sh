@@ -87,6 +87,7 @@ VALIDATE $? "systemctl start catalogue"
 
 cp mongo.repo /etc/yum.repos.d/mongo.repo &>> $LOGFILE
 VALIDATE $? "copying mongo repo"
+
 dnf install mongodb-org-shell -y &>> $LOGFILE
 VALIDATE $? "mongodb-org-shell installation"
 mongo --host $MONGDB_HOST </app/schema/catalogue.js &>> $LOGFILE
